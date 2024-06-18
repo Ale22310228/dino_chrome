@@ -1,0 +1,47 @@
+@startuml DinoChrom
+
+Class Dinosaurio 
+Class Juego
+
+Class Velocidad
+Class Salto
+Class Captus 
+Class pterosaurio
+Class Mapa
+Class Vida 
+Class Distancia 
+Class Dia 
+Class Noche 
+
+Class Nube 
+Class Color 
+Class Puntaje 
+Class MejorPuntaje 
+
+Dinosaurio "1" *_ _"*" Velocidad 
+Dinosaurio "1" *_ _"*" Salto
+Dinosaurio "1" *_ _"*" Vida
+
+Juego "1" *_ _ "*" Dinosaurio
+Juego "1" *_ _ "*" Mapa 
+Juego "1" *_ _ "*" Puntaje
+Juego "1" *_ _ "*" MejorPuntaje
+Juego "1" *_ _ "*" Distancia
+
+Mapa "1" *_ _ "*" Dia
+Mapa "1" *_ _ "*" Noche
+Mapa "1" *_ _ "*" Nube
+Mapa "1" *_ _ "*" Cactus
+Mapa "1" *_ _ "*" Pterosaurio
+
+Dia "0 .. 1" *_ _ "1" Color
+Noche "0 .. 1" *_ _ "1" Color
+
+Puntaje "1" *_ _ "1" Dinosaurio 
+MejorPuntaje "1" *_ _ "1" Puntaje 
+
+@ enduml
+
+
+
+

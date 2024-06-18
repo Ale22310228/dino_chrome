@@ -1,5 +1,5 @@
-bin/cow : src/cow.cpp include/*
-	c++ src/cow.cpp -o bin/cow -lcurses -I include
+bin/Dino :src/Dino_chrome.cpp
+	g++ src/Dino_chrome.cpp -o bin/Dino -l include -lftxui-screen -lftxui-dom -lftxui-component -std=c++2a
 
-run : bin/cow
-	./bin/cow
+run : bin/Dino
+	./bin/Dino

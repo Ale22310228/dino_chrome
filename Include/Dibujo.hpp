@@ -28,16 +28,18 @@ public:
         this->y = 0;
     }
     void Dibujar()
+{
+    std::string linea;
+    move(this->y, this->x);
+    while (std::getline(archivo, linea))
     {
-        std::string linea;
-        move(this->y, this->x);
-        while (std::getline(archivo, linea))
-        {
-            mvaddstr(getcury(stdscr) + 1, this->x, linea.c_str()); //
-        }
-        archivo.clear();
-        archivo.seekg(0);
+        mvaddstr(getcury(stdscr), this->x, linea.c_str());
+        move(getcury(stdscr) + 1, this->x); // Mover el cursor a la siguiente línea
     }
+    archivo.clear();
+    archivo.seekg(0);
+}
+
     ~Dibujo()
     {
         archivo.close();

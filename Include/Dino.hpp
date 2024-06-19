@@ -1,16 +1,6 @@
-#pragma once
-
-#include "Dibujo.hpp"
-#include "Actualizable.hpp"
-
 class Dino : public Dibujo, public Actualizable {
-private:
-    int x;
-    int y;
-
 public:
-    Dino() : Dibujo("DinoS"), x(0), y(0) {}
-    Dino(int x, int y) : Dibujo(x, y, "DinoS"), x(x), y(y) {}
+    Dino(int x, int y, std::string recurso) : Dibujo(x, y, recurso) {}
 
     void DesplazarIzq() {
         x -= 1;
@@ -21,8 +11,7 @@ public:
     }
 
     void Actualizar() override {
-        // Implementación de la función Actualizar según sea necesario
-        // Por ejemplo, actualizar las coordenadas u otros atributos
+        // Actualiza las coordenadas o cualquier otro atributo
     }
 
     ~Dino() {} // Destructor vacío si no hay recursos adicionales que liberar

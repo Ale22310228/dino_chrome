@@ -24,7 +24,7 @@ public:
     }
 
     void Saltar() {
-        if (!saltando && !agachado) {
+        if (!saltando && !agachado && y == y_inicial) {
             saltando = true;
         }
     }

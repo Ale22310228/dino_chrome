@@ -54,8 +54,20 @@ public:
         return x;
     }
 
+    int getY() const {
+        return y;
+    }
+
+    void setX(int newX) {
+        x = newX;
+    }
+
     void DesplazarIzq() {
         x -= 1;
+    }
+
+    void DesplazarDer() {
+        x += 1;
     }
 
     ~Dibujo() {

@@ -3,10 +3,15 @@
 #include "Dino.hpp"
 #include <list>
 #include <curses.h>
+
+// Desactivar la macro border si está definida
+#ifdef border
+#undef border
+#endif
+
 #include <ftxui/dom/elements.hpp>           
-#include <ftxui/dom/flexbox_config.hpp>    
 #include <ftxui/dom/node.hpp>               
-#include <ftxui/screen/screen.hpp>         
+#include <ftxui/screen/screen.hpp>          
 #include <ftxui/component/component.hpp>    
 #include <ftxui/component/screen_interactive.hpp>  
 

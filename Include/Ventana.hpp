@@ -1,45 +1,38 @@
-#pragma once
-#include <curses.h>
-#include <unistd.h>
+#ifndef VENTANA_HPP
+#define VENTANA_HPP
+
+#include "Actualizable.hpp"
+#include "Dibujo.hpp"
 #include <list>
-#include <Actualizable.hpp>
+#include <curses.h>
 
-using namespace std;
-
-class Ventana
-{
-private:
+class Ventana {
 public:
-    Ventana()
-    {
-        initscr();
-        noecho();
-        curs_set(FALSE);
-        cbreak();
-        keypad(stdscr, TRUE);
-        timeout(10);
+    Ventana() {
+        initscr(); // Inicializar la pantalla
+        noecho();  // No mostrar las teclas presionadas
+        curs_set(FALSE); // Ocultar el cursor
+        keypad(stdscr, TRUE); // Habilitar la captura de teclas especiales
+        timeout(100); // Establecer el tiempo de espera para getch()
     }
-    void Actualizar(list<Actualizable *> actualizables)
-    {
-        for (auto &&actualizable : actualizables)
-        {
-            actualizable->Actualizar();
-        }
-        usleep(41000); // 0.041s/fotograma
+
+    ~Ventana() {
+        endwin(); // Terminar ncurses
     }
-    void Dibujar(list<Dibujo *> dibujos)
-    {
-        clear();
-        for (auto &&dibujo : dibujos)
-        {
+
+    void Dibujar(std::list<Dibujo*>& dibujos) {
+        clear(); // Limpiar la pantalla
+        for (auto& dibujo : dibujos) {
             dibujo->Dibujar();
         }
-        box(stdscr, '*', '>');
-        refresh();
+        refresh(); // Refrescar la pantalla para mostrar los cambios
     }
-    ~Ventana()
-    {
-        keypad(stdscr, FALSE);
-        endwin();
+
+    void Actualizar(std::list<Actualizable*>& actualizables) {
+        for (auto& actualizable : actualizables) {
+            actualizable->Actualizar();
+        }
     }
 };
+
+#endif // VENTANA_HPP
